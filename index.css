@@ -12,6 +12,7 @@ h3{
 label{
 
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-seri;
+    text-align: center;
 }
 .sort{
 
@@ -57,7 +58,7 @@ button{
 
 .btn-danger{
 
-    margin-left: 20px;
+    margin-left: 40px;
     margin-top: 5px;
 }
 
@@ -67,12 +68,7 @@ button{
 
 }
 
-label{
-
-    text-align: center;
-}
 .btn-success{
 
-    margin-top: 2%;
-    margin-left: 90%;
+    margin-left: 45%;
 }
