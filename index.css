@@ -1,8 +1,51 @@
 h1{
     text-align: center;
+    margin-top: 3%;
 }
-.checkoutbtn{
+h3{
 
-    align-items: center;
+    margin-left: 13px;
+}
+.sort{
+
+    margin-left: 15px;
+    margin-top: 5px;
+}
+.sortDesc{
+
+    margin-left: 20px;
+}
+.btn-light{
+
+    align-items: right;
     margin-left: 35%;
 }
+img{
+   height: 10%;
+   width: 15%;
+}
+.card{
+
+    margin-top: 8%;
+    max-width: 75%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+li{
+
+ text-align: center;
+ 
+}
+li img{
+
+    align-self: center;
+}
+li button{
+
+    align-self: center;
+}
+.form-control{
+
+    max-width: 50%;
+}
+
