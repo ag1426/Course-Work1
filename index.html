@@ -17,17 +17,17 @@
     <div id="app">
         <header>
             <h1>{{ sitename }} </h1>
-           </header>
-           <div v-if="showLesson" class="text-right" style="margin-top: 5%; margin-right: 40px;"> 
+        </header>
+        <div v-if="showLesson" class="text-right" style="margin-top: 5%; margin-right: 40px;">
             <button type="button" class="btn btn-light" @click="showCheckOut" v-if="cartItemCount > 0"> Shopping Cart
-             <span class="fas fa-cart-plus"> {{cartItemCount}}
+                <span class="fas fa-cart-plus"> {{cartItemCount}}
                 </span>
             </button>
         </div>
         <div v-else>
             <button type="button" class="btn btn-light" @click="showCheckOut" style="margin-left: 40px;">
                 Home
-             </button>
+            </button>
         </div>
         <main>
             <div v-if='showLesson'>
@@ -135,26 +135,32 @@
                         </tbody>
 
                     </table>
-                    </div>
-                    <button class="btn btn-danger" @click="clearMyCart()" v-if="cartItemCount > 0">Clear My Cart</button>
-                    <div class="form-group" style="margin-top: 15px;">
-                        <label for="name">Name</label>
-                        <input placeholder="Enter your name" v-model.trim="order.name" class="form-control"
-                            onkeypress="return (event.charCode > 63 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
-                            type="text" />
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input placeholder="Enter your number" v-model.trim="order.phoneNumber" class="form-control" @keypress="ifNumeric" pattern="^\d{9}$"
-                            title="Please Enter A Valid Phone Number (9 Digits!)" type="tel" />
-                    </div>
-                    
-                    <button class="btn btn-success" @click="checkOut()" v-if="order.phoneNumber != null && order.name!= null && cartItemCount>0">Checkout</button>
                 </div>
-               
+                <button class="btn btn-danger" @click="clearMyCart()" v-if="cartItemCount > 0">Clear My Cart</button>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="name">Name</label>
+                    <input placeholder="Enter your name" v-model.trim="order.name" class="form-control"
+                        onkeypress="return (event.charCode > 63 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+                        type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input placeholder="Enter your number" v-model.trim="order.phoneNumber" class="form-control"
+                        @keypress="ifNumeric" pattern="^\d{9}$" title="Please Enter A Valid Phone Number (9 Digits!)"
+                        type="tel" />
+                </div>
 
-                
+                <button class="btn btn-success" @click="checkOut()"
+                    v-if="order.phoneNumber != null && order.name!= null && cartItemCount>0">Checkout</button>
             </div>
+
+            <h2>Order Information</h2>
+            <p class="alert alert-dark">Name: {{order.name}}</p>
+            <p class="alert alert-dark">Phone Number: {{order.phoneNumber}}</p>
+
+
+
+    </div>
     </main>
 
     <script type="text/javascript">
