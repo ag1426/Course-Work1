@@ -13,82 +13,80 @@
     <script src="lessons.js"></script>
 </head>
 
-<body>
+<body style="background-color: #41B3A3;">
     <div id="app">
         <header>
             <h1>{{ sitename }} </h1>
-            <div v-if="showLesson">
-                <button type="button" class="btn btn-light"  @click="showCheckOut" v-if="cartItemCount > 0" style="margin-right: 10px;">
-                    {{cartItemCount}}
-                    <span class="fas fa-cart-plus"> Shopping Cart
-                    </span>
-                </button>
-            </div>
-            <div v-else>
-                <button type="button" class="btn btn-light" @click="showCheckOut" style="margin-left: 15px;">
-                    Home
-                    </span>
-                </button>
-            </div>
-        </header>
+           </header>
+           <div v-if="showLesson" class="text-right" style="margin-top: 5%; margin-right: 40px;"> 
+            <button type="button" class="btn btn-light" @click="showCheckOut" v-if="cartItemCount > 0"> Shopping Cart
+             <span class="fas fa-cart-plus"> {{cartItemCount}}
+                </span>
+            </button>
+        </div>
+        <div v-else>
+            <button type="button" class="btn btn-light" @click="showCheckOut" style="margin-left: 10px;">
+                Home
+             </button>
+        </div>
         <main>
             <div v-if='showLesson'>
                 <h3>Sort By</h3>
                 <div class="sort">
-                <input type="radio" value="activityAsc" v-model="selected">
-                <label>Activity</label>
-            </div>
-            <div class="sortDesc">
-                <input type="radio" value="activityDesc" v-model="selected" vif="selected">
-                <label>Activity Descending</label>
-            </div>
-            <div class="sort">
-                <input type="radio" value="priceAsc" v-model="selected">
-                <label>Price</label>
-            </div>
-            <div class="sortDesc">
-                <input type="radio" value="priceDesc" v-model="selected">
-                <label>Price Descending</label>
-            </div>
-            <div class="sort">
-                <input type="radio" value="locationAsc" v-model="selected">
-                <label>Location</label>
-            </div>
-            <div class="sortDesc">
-                <input type="radio" value="locationDesc" v-model="selected">
-                <label>Location Descending</label>
-            </div>
-            <div class="sort">
-                <input type="radio" value="spacesAsc" v-model="selected">
-                <label>Numeber Of Spaces</label>
-            </div>
-            <div class="sortDesc">
-                <input type="radio" value="spacesDesc" v-model="selected">
-                <label>Spaces Descending</label>
-            </div>
+                    <input type="radio" value="activityAsc" v-model="selected">
+                    <label>Activity</label>
+                </div>
+                <div class="sortDesc">
+                    <input type="radio" value="activityDesc" v-model="selected" vif="selected">
+                    <label>Activity Descending</label>
+                </div>
+                <div class="sort">
+                    <input type="radio" value="priceAsc" v-model="selected">
+                    <label>Price</label>
+                </div>
+                <div class="sortDesc">
+                    <input type="radio" value="priceDesc" v-model="selected">
+                    <label>Price Descending</label>
+                </div>
+                <div class="sort">
+                    <input type="radio" value="locationAsc" v-model="selected">
+                    <label>Location</label>
+                </div>
+                <div class="sortDesc">
+                    <input type="radio" value="locationDesc" v-model="selected">
+                    <label>Location Descending</label>
+                </div>
+                <div class="sort">
+                    <input type="radio" value="spacesAsc" v-model="selected">
+                    <label>Numeber Of Spaces</label>
+                </div>
+                <div class="sortDesc">
+                    <input type="radio" value="spacesDesc" v-model="selected">
+                    <label>Spaces Descending</label>
+                </div>
                 <div class="row">
                     <div class="col-sm-3 py-2" v-for="lesson in MyLessons">
                         <div class="card">
                             <img class="card-img-top" v-bind:src="lesson.image">
                             <div class="card-body">
                                 <p class="class-text">Activity: {{lesson.activity}}</p>
-                                    <p class="class-text">Location: {{lesson.location}}</p>
-                                    <p class="class-text">Price: {{lesson.price}}</p>
-                                    <p class="class-text">Number of spaces:
-                                        {{lesson.numberOfSpaces - cartCount(lesson)}}</p>
-                                    <button type="button" class="btn btn-primary"
-                                        @click="addToCart(lesson)" v-if="canAddToCart(lesson)">
-                                        Add to cart
-                                    </button>
-                                    <button disabled="disabled" v-else>
-                                        Add to cart
-                                    </button>
+                                <p class="class-text">Location: {{lesson.location}}</p>
+                                <p class="class-text">Price: {{lesson.price}}</p>
+                                <p class="class-text">Number of spaces:
+                                    {{lesson.numberOfSpaces - cartCount(lesson)}}</p>
+                                <button type="button" class="btn btn-primary" @click="addToCart(lesson)"
+                                    v-if="canAddToCart(lesson)">
+                                    Add to cart
+                                </button>
+                                <button type="button" class="btn btn-primary disabled" v-else>
+                                    Add to cart
+                                </button>
 
-                                    <span v-if='lesson.numberOfSpaces === cartCount(lesson)'>All out!</span>
-                                    <span v-else-if="lesson.numberOfSpaces - cartCount(lesson) < 5">
-                                        Only {{lesson.numberOfSpaces - cartCount(lesson)}} left!
-                                    </span>
-                                    <span v-else>Buy now!</span>
+                                <span v-if='lesson.numberOfSpaces === cartCount(lesson)'>All out!</span>
+                                <span v-else-if="lesson.numberOfSpaces - cartCount(lesson) < 3">
+                                    Only {{lesson.numberOfSpaces - cartCount(lesson)}} left!
+                                </span>
+                                <span v-else>Buy now!</span>
 
                             </div>
 
@@ -99,37 +97,66 @@
                 </div>
             </div>
             <div v-else>
-                <h2 style="text-align: center;">Cart</h2> 
-                <div class="container p-3 my-3 bg-dark text-black">
-                  <div class="card" v-for="lesson in cart" style="max-width: 20%; align-self: center;">
-                    <img v-bind:src="lesson.image">
-                    Activity: {{lesson.activity}}<br>
-                    Location: {{lesson.location}}<br>
-                    Price: {{lesson.price}}<br>
-                    <button type="button" class="btn btn-danger" @click="removeItemFromCart(lesson)">
-                        Remove
-                    </button>
+                <h2 style="text-align: center;">Cart</h2>
+                <div class="table-responsive">
+                    <table class="table" v-for="lesson in cart">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="border-1 bg-dark white-text">
+                                    <div class="p-2 px-3 text-uppercase">Activity</div>
+                                </th>
+                                <th scope="col" class="border-1 bg-dark white-text">
+                                    <div class="py-2 text-uppercase">Location</div>
+                                </th>
+                                <th scope="col" class="border-1 bg-dark white-text">
+                                    <div class="py-2 text-uppercase">Price</div>
+                                </th>
+                                <th scope="col" class="border-1 bg-dark white-text">
+                                    <div class="py-2 text-uppercase">Remove</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-0">
+                                    <div class="p-2">
+                                        <img v-bind:src="lesson.image" alt="" width="70"
+                                            class="img-fluid rounded shadow-sm">
+                                        <div class="ml-3 d-inline-block align-middle">
+                                            <h5 class="mb-0" style="color: black;">{{lesson.activity}}</h5>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="border-0 align-middle"><strong>{{lesson.location}}</strong></td>
+                                <td class="border-0 align-middle"><strong>{{lesson.price}}</strong></td>
+                                <td class="border-0 align-middle"><button type="button" class="btn-danger"
+                                        @click="removeItemFromCart(lesson)"><span class="fa fa-trash"></span></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
                 </div>
+                <button class="btn btn-danger" @click="clearMyCart()" v-if="cartItemCount > 0">Clear My Cart</button>
+
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input v-model.trim="order.name" class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" type="text" />
+                    <input v-model.trim="order.name" class="form-control"
+                        onkeypress="return (event.charCode > 63 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+                        type="text" />
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number</label>
-                    <input v-model.trim="order.phoneNumber" @keypress="ifNumeric" pattern="^\d{9}$" title="Please Enter A Valid Phone Number (9 Digits!)" class="form-control" type="tel" />
+                    <input v-model.trim="order.phoneNumber" class="form-control" @keypress="ifNumeric" pattern="^\d{9}$"
+                        title="Please Enter A Valid Phone Number (9 Digits!)" type="tel" />
                 </div>
+                <div style="margin-right: 50%;">
                 <button class="btn btn-success" @click="checkOut()" v-if="order.phoneNumber != null && order.name!= null && cartItemCount>0">Checkout</button>
-                <hr>
             </div>
-            <hr>
-                <div style="position: absolute; left: 40%;">
-                <h2>My Order</h2>
-                <p>Customer Name: {{order.name}}</p>
-                <p>Phone Number: {{order.phoneNumber}}</p>
             </div>
-            </main>
-    </main>
+
     </div>
+    </main>
 
     <script type="text/javascript">
         var afterSchool = new Vue({
@@ -156,10 +183,10 @@
                 addToCart(lesson) {
                     return this.cart.push(lesson);
                 },
-                ifNumeric(event) {      
+                ifNumeric(event) {
                     let numeral = event.numeral ? event.numeral : event.which;
                     if (numeral < 48 || numeral > 58) {
-                    event.preventDefault();
+                        event.preventDefault();
                     }
                 },
 
@@ -182,9 +209,15 @@
                 },
                 removeItemFromCart(lesson) {
                     this.cart.splice(this.cart.indexOf(lesson), 1);
-            
+                    this.showLesson = True;
+
                 },
-                
+
+                clearMyCart() {
+                    this.cart = [];
+                    this.showProduct = true;
+                },
+
                 checkOut() {
                     alert('Your Order is Processed');
                 },
@@ -195,101 +228,91 @@
                 cartItemCount() {
                     return this.cart.length;
                 },
-                MyLessons()
-                {
-                    if (this.selected === "")
-                    {
+                MyLessons() {
+                    if (this.selected === "") {
                         return this.lessons.slice(0);
-                    }  
-                    if(this.selected === "activityAsc")
-                    {
-                        function compare(a, b) {
-                        if (a.activity > b.activity)
-                            return 1;
-                        if (a.activity < b.activity)
-                            return -1;
-                        return 0;
                     }
-                    return lessons.sort(compare);
-                }
-                    if(this.selected === "activityDesc")
-                    {
+                    if (this.selected === "activityAsc") {
                         function compare(a, b) {
-                        if (a.activity < b.activity)
-                            return 1;
-                        if (a.activity > b.activity)
-                            return -1;
-                        return 0;
+                            if (a.activity > b.activity)
+                                return 1;
+                            if (a.activity < b.activity)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
                     }
-                    return lessons.sort(compare);  
-                }
-                if(this.selected === "priceAsc")
-                    {
+                    if (this.selected === "activityDesc") {
                         function compare(a, b) {
-                        if (a.price > b.price)
-                            return 1;
-                        if (a.price < b.price)
-                            return -1;
-                        return 0;
+                            if (a.activity < b.activity)
+                                return 1;
+                            if (a.activity > b.activity)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
                     }
-                    return lessons.sort(compare);  
-                }
-                if(this.selected === "priceDesc")
-                    {
+                    if (this.selected === "priceAsc") {
                         function compare(a, b) {
-                        if (a.price < b.price)
-                            return 1;
-                        if (a.price > b.price)
-                            return -1;
-                        return 0;
+                            if (a.price > b.price)
+                                return 1;
+                            if (a.price < b.price)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
                     }
-                    return lessons.sort(compare);  
-                }
-                if(this.selected === "locationAsc")
-                    {
+                    if (this.selected === "priceDesc") {
                         function compare(a, b) {
-                        if (a.location > b.location)
-                            return 1;
-                        if (a.location < b.location)
-                            return -1;
-                        return 0;
+                            if (a.price < b.price)
+                                return 1;
+                            if (a.price > b.price)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
                     }
-                    return lessons.sort(compare);  
-                }
-                if(this.selected === "locationDesc")
-                    {
+                    if (this.selected === "locationAsc") {
                         function compare(a, b) {
-                        if (a.location < b.location)
-                            return 1;
-                        if (a.location > b.location)
-                            return -1;
-                        return 0;
+                            if (a.location > b.location)
+                                return 1;
+                            if (a.location < b.location)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
                     }
-                    return lessons.sort(compare);  
-                }
-                if(this.selected === "spacesAsc")
-                    {
+                    if (this.selected === "locationDesc") {
                         function compare(a, b) {
-                        if (a.numberOfSpaces > b.numberOfSpaces)
-                            return 1;
-                        if (a.numberOfSpaces < b.numberOfSpaces)
-                            return -1;
-                        return 0;
+                            if (a.location < b.location)
+                                return 1;
+                            if (a.location > b.location)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
                     }
-                    return lessons.sort(compare);  
-                }
-                if(this.selected === "spacesDesc")
-                    {
+                    if (this.selected === "spacesAsc") {
                         function compare(a, b) {
-                        if (a.numberOfSpaces < b.numberOfSpaces)
-                            return 1;
-                        if (a.numberOfSpaces > b.numberOfSpaces)
-                            return -1;
-                        return 0;
+                            if (a.numberOfSpaces > b.numberOfSpaces)
+                                return 1;
+                            if (a.numberOfSpaces < b.numberOfSpaces)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
                     }
-                    return lessons.sort(compare);  
+                    if (this.selected === "spacesDesc") {
+                        function compare(a, b) {
+                            if (a.numberOfSpaces < b.numberOfSpaces)
+                                return 1;
+                            if (a.numberOfSpaces > b.numberOfSpaces)
+                                return -1;
+                            return 0;
+                        }
+                        return lessons.sort(compare);
+                    }
                 }
-            }
             }
         })
 
