@@ -18,7 +18,7 @@
         <header>
             <h1>{{ sitename }} </h1>
             <div v-if="showLesson">
-                <button type="button" class="btn btn-light" style="margin-right: 10px;" @click="showCheckOut" v-if="cartItemCount > 0">
+                <button type="button" class="btn btn-light"  @click="showCheckOut" v-if="cartItemCount > 0" style="margin-right: 10px;">
                     {{cartItemCount}}
                     <span class="fas fa-cart-plus"> Shopping Cart
                     </span>
@@ -110,8 +110,6 @@
                         Remove
                     </button>
                 </div>
-                <button class="btn btn-danger" @click="clearMyCart()" v-if= "cartItemCount>0">Clear My Cart</button>
-                <hr>
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input v-model.trim="order.name" class="form-control" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" type="text" />
@@ -168,10 +166,6 @@
                 showCheckOut() {
 
                     this.showLesson = this.showLesson ? false : true;
-                },
-                clearMyCart(){
-                    webstore.cart = [];
-                    this.showProduct = true;
                 },
                 canAddToCart(lesson) {
                     return lesson.numberOfSpaces > this.cartCount(lesson);
