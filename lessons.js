@@ -2,7 +2,7 @@ let lessons = [
     {
         "id": 1001,
         "activity": "Football",
-        "location": "Dubai",
+        "location": "Al Barsha",
         "price": "500 AED",
         "image": 'images/football1.png',
         "numberOfSpaces": 5,
@@ -10,7 +10,7 @@ let lessons = [
     {
         "id": 1002,
         "activity": "Cricket",
-        "location": "Dubai",
+        "location": "Internet City",
         "price": "650 AED",
         "image": 'images/cricket1.png',
         "numberOfSpaces": 5,
@@ -19,7 +19,7 @@ let lessons = [
     {
         "id": 1003,
         "activity": "Swimming",
-        "location": "Dubai",
+        "location": "Academic City",
         "price": "450 AED",
         "image": 'images/swimming1.png',
         "numberOfSpaces": 5,
@@ -27,7 +27,7 @@ let lessons = [
     {
         "id": 1004,
         "activity": "Rugby",
-        "location": "Sharjah",
+        "location": "Al Jaddaf",
         "price": "300 AED",
         "image": 'images/rugby1.png',
         "numberOfSpaces": 5,
@@ -35,7 +35,7 @@ let lessons = [
     {
         "id": 1005,
         "activity": "Baseball",
-        "location": "Sharjah",
+        "location": "Burjuman",
         "price": "500 AED",
         "image": 'images/baseball1.png',
         "numberOfSpaces": 5,
@@ -43,7 +43,7 @@ let lessons = [
     {
         "id": 1006,
         "activity": "Gymnastics",
-        "location": "Sharjah",
+        "location": "Ras Al Khor",
         "price": "350 AED",
         "image": 'images/gymnastics1.png',
         "numberOfSpaces": 5,
@@ -51,7 +51,7 @@ let lessons = [
     {
         "id": 1007,
         "activity": "Biking",
-        "location": "Abu Dhabi",
+        "location": "Jebel Ali Palm",
         "price": "200 AED",
         "image": 'images/biking1.png',
         "numberOfSpaces": 5,
@@ -59,7 +59,7 @@ let lessons = [
     {
         "id": 1008,
         "activity": "Athletics",
-        "location": "Abu Dhabi",
+        "location": "Warsan First",
         "price": "400 AED",
         "image": 'images/athletics1.png',
         "numberOfSpaces": 5,
@@ -67,7 +67,7 @@ let lessons = [
     {
         "id": 1009,
         "activity": "Chess",
-        "location": "Abu Dhabi",
+        "location": "Business Bay",
         "price": "300 AED",
         "image": 'images/chess1.png',
         "numberOfSpaces": 5,
@@ -75,7 +75,7 @@ let lessons = [
     {
         "id": 1010,
         "activity": "Badminton",
-        "location": "Dubai",
+        "location": "World Trade Center",
         "price": "450 AED",
         "image": 'images/badminton1.png',
         "numberOfSpaces": 5,
