@@ -75,7 +75,7 @@ let lessons = [
     {
         "id": 1010,
         "activity": "Badminton",
-        "location": "World Trade Center",
+        "location": "Karama",
         "price": "450 AED",
         "image": 'images/badminton1.png',
         "numberOfSpaces": 5,
