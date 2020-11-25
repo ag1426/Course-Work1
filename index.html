@@ -98,8 +98,9 @@
             </div>
             <div v-else>
                 <h2 style="text-align: center;">Cart</h2>
+
                 <div class="table-responsive">
-                    <table class="table" v-for="lesson in cart">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col" class="border-1 bg-dark white-text">
@@ -116,7 +117,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-for="lesson in cart">
                             <tr>
                                 <th scope="row" class="border-0">
                                     <div class="p-2">
@@ -135,6 +136,7 @@
                         </tbody>
 
                     </table>
+                    </div>
 
                 </div>
                 <button class="btn btn-danger" @click="clearMyCart()" v-if="cartItemCount > 0">Clear My Cart</button>
