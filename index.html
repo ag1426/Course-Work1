@@ -151,7 +151,7 @@
                 </div>
 
                 <button class="btn btn-success" @click="checkOut()"
-                    v-if="order.phoneNumber!= null && order.name!= null  cartItemCount>0">Checkout</button>
+                    v-if="order.phoneNumber!= null && order.name!= null && cartItemCount>0">Checkout</button>
                     
                     <h2>Order Information</h2>
             <p class="alert alert-dark">Name: {{order.name}}</p>
